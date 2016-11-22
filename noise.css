@@ -3,13 +3,20 @@ html {
 }
 
 body {
-  background-color: black;   
+  background-color: black;
+}
+
+h1 {
+  font-family: 'Fredoka One', cursive;
+  color: white;
+  text-align: center;
+  margin-top: 50px;
 }
 
 .instrument {
   height: 10rem;
   width: 60rem;
-  margin: 5rem auto;
+  margin: 3rem auto;
 }
 
 .note {
@@ -51,3 +58,8 @@ body {
 .b { color: #f26fd4; background-color: #43293d; }
 .b:hover { background-color: #6f3a62; }
 .b:active, .b.active { background-color: #f26fd4; }
+
+.volume{text-align: center;}
+
+.volup, .voldown { color: grey; background-color: #ffffff; opacity: 0.75; width: 4rem; height: 4rem;}
+.volup:active, .volup.active, .voldown:active, .voldown.active { opacity: 1;}

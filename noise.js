@@ -1,4 +1,5 @@
 $(document).ready( function() {
+  // tone is played when clicked!
   $('.instrument').on('click', 'button', function(event) {
     var note = document.getElementById($(this).html() + 'Audio');
     // if (note.paused) {
@@ -8,6 +9,7 @@ $(document).ready( function() {
     // }
   });
 
+  // Tone is played when corresponding key is pressed! Background colors are also activated;
   $("body").keypress(function(event) {
     var note = '';
     if (event.key == 'c') {
@@ -39,6 +41,75 @@ $(document).ready( function() {
     // }
   });
 
+
+  // Volume button: Should play tone C tone with adjusted volume when clicked/ when up/down arrow is pressed.
+  // Also updates volume number.
+  $('.volup').click(function(){
+    $('#cAudio')[0].volume += 0.1;
+    $('#dAudio')[0].volume += 0.1;
+    $('#eAudio')[0].volume += 0.1;
+    $('#fAudio')[0].volume += 0.1;
+    $('#gAudio')[0].volume += 0.1;
+    $('#aAudio')[0].volume += 0.1;
+    $('#bAudio')[0].volume += 0.1;
+    $('.vol').remove();
+    $('.volume').prepend('<h1 class="vol">Volume: ' + Math.floor($('#cAudio')[0].volume*10) + '</h1>');
+    var note = document.getElementById('cAudio');
+    note.play();
+    note.currentTime = 0;
+  });
+
+  $('.voldown').click(function(){
+    $('#cAudio')[0].volume -= 0.1;
+    $('#dAudio')[0].volume -= 0.1;
+    $('#eAudio')[0].volume -= 0.1;
+    $('#fAudio')[0].volume -= 0.1;
+    $('#gAudio')[0].volume -= 0.1;
+    $('#aAudio')[0].volume -= 0.1;
+    $('#bAudio')[0].volume -= 0.1;
+    $('.vol').remove();
+    $('.volume').prepend('<h1 class="vol">Volume: ' + Math.floor($('#cAudio')[0].volume*10) + '</h1>');
+    var note = document.getElementById('cAudio');
+    note.play();
+    note.currentTime = 0;
+  });
+
+  $("body").keydown(function(event) {
+    var note = '';
+    if (event.keyCode == 38){
+      $('#cAudio')[0].volume += 0.1;
+      $('#dAudio')[0].volume += 0.1;
+      $('#eAudio')[0].volume += 0.1;
+      $('#fAudio')[0].volume += 0.1;
+      $('#gAudio')[0].volume += 0.1;
+      $('#aAudio')[0].volume += 0.1;
+      $('#bAudio')[0].volume += 0.1;
+      $('.vol').remove();
+      $('.volume').prepend('<h1 class="vol">Volume: ' + Math.floor($('#cAudio')[0].volume*10) + '</h1>');
+      $('.volup').addClass('active');
+      note = document.getElementById('cAudio');
+      note.play();
+      note.currentTime = 0;
+    } else if (event.keyCode == 40){
+      $('#cAudio')[0].volume -= 0.1;
+      $('#dAudio')[0].volume -= 0.1;
+      $('#eAudio')[0].volume -= 0.1;
+      $('#fAudio')[0].volume -= 0.1;
+      $('#gAudio')[0].volume -= 0.1;
+      $('#aAudio')[0].volume -= 0.1;
+      $('#bAudio')[0].volume -= 0.1;
+      $('.vol').remove();
+      $('.volume').prepend('<h1 class="vol">Volume: ' + Math.floor($('#cAudio')[0].volume*10) + '</h1>');
+      $('.voldown').addClass('active');
+      note = document.getElementById('cAudio');
+      note.play();
+      note.currentTime = 0;
+    }
+  });
+
+
+// change background back to original color when keys are not pressed
+
   $("body").keyup(function(event) {
     if (event.key == 'c') {
       $('.c').removeClass('active');
@@ -54,6 +125,10 @@ $(document).ready( function() {
       $('.a').removeClass('active');
     } else if (event.key == 'b') {
       $('.b').removeClass('active');
+    } else if (event.keyCode == 38) {
+      $('.volup').removeClass('active');
+    } else if (event.keyCode == 40) {
+      $('.voldown').removeClass('active');
     }
   });
 
